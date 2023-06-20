@@ -10,13 +10,16 @@ it 'ログイン後ヘッダーにログアウトが表示されている' do
  fill_in "Email", with: user.email
  fill_in "Password", with: user.password
  click_button "Log in"
- 
+ click_on "Account"
+
+
+#  expect(page).to_not have_selector "a[href=\"#{login_path}\"]"
+#  expect(page).to have_selector "a[href=\"#{logout_path}\"]"
+#  expect(page).to have_selector "a[href=\"#{user_path(user)}\"]"
+
  expect(page).to_not have_link "Log in" , href: login_path
  expect(page).to have_link "Log out" , href: logout_path
  expect(page).to have_link "Profile", href: user_path(user)
-
-  
-
 end 
 end 
   
