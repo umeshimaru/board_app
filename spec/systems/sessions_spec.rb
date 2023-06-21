@@ -1,9 +1,11 @@
 require 'rails_helper'
 
-
 RSpec.describe "Sessions", type: :system do
+
+let(:user) { FactoryBot.create(:user,) }
+let(:other_user) { FactoryBot.create(:other_user) }
+
 describe 'ログイン関連' do 
-  let(:user) { FactoryBot.create(:user) }
 
 it 'ログイン後ヘッダーにログアウトが表示されている' do
  visit login_path
@@ -13,14 +15,17 @@ it 'ログイン後ヘッダーにログアウトが表示されている' do
  click_on "Account"
 
 
-#  expect(page).to_not have_selector "a[href=\"#{login_path}\"]"
-#  expect(page).to have_selector "a[href=\"#{logout_path}\"]"
-#  expect(page).to have_selector "a[href=\"#{user_path(user)}\"]"
-
  expect(page).to_not have_link "Log in" , href: login_path
  expect(page).to have_link "Log out" , href: logout_path
  expect(page).to have_link "Profile", href: user_path(user)
 end 
 end 
+
+describe '正しいユーザーしかプロフィール編集できない'
+  it '正しいユーザーですか？' do
+    log_in(user)
+
+  end
   
-end
+
+end 
