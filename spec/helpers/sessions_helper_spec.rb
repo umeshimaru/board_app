@@ -10,6 +10,11 @@ require 'rails_helper'
 #     end
 #   end
 # end
+
+def log_in(user)
+  session[:user_id] = user.id
+end
+
 RSpec.describe SessionsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
 end
