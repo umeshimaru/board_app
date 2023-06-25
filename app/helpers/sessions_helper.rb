@@ -18,6 +18,7 @@ module SessionsHelper
 
 
   def log_out
+    forget(current_user)
     session.delete(:user_id)
     @current_user = nil
   end
@@ -28,9 +29,14 @@ module SessionsHelper
   end
     
 
+  # 記憶トークンcookieに対応するユーザーを返す
+  # if (user_id = session[:user_id])
+  # ↑の書き方は右辺と左辺同じですか？と聞いてるんではなくて右辺を左辺に代入して、そのあと左辺の中はnilですか？それとも何か入っていますか？って意味
   def current_user
+    # このifの中身はログイン（remember meなし）の時にtrueになる？
     if (user_id = session[:user_id])
       @current_user ||= User.find_by(id: user_id)
+      # ログイン（remember me機能あり）の時trueになる？
     elsif (user_id = cookies.encrypted[:user_id])
       user = User.find_by(id: user_id)
       if user && user.authenticated?(cookies[:remember_token])
@@ -56,4 +62,11 @@ module SessionsHelper
     cookies.permanent[:remember_token] = user.remember_token
 
   end
+
+    # 永続的セッションを破棄する
+    def forget(user)
+      user.forget
+      cookies.delete(:user_id)
+      cookies.delete(:remember_token)
+    end
 end
