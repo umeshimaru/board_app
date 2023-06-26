@@ -44,6 +44,7 @@ module SessionsHelper
         @current_user = user
       end
     end
+  end 
 
    # 記憶したURL（もしくはデフォルト値）にリダイレクト
    def redirect_back_or(default)
@@ -69,4 +70,5 @@ module SessionsHelper
       cookies.delete(:user_id)
       cookies.delete(:remember_token)
     end
+  
 end

@@ -1,23 +1,17 @@
 class User
 attr_accessor :name
 
-  # def initialize(name)
-  #   @name = name
-  # end
+  def initialize(name)
+    @name = name
+  end
 
-  # def name
-  #   @name 
-  # end
 
-  # def name=(new_name)
-  # @name = new_name
-  # end
 
  
 
 end 
 
-user = User.new
+user = User.new('らん')
 puts user.name
 user.name = "毛利蘭"
 puts user.name
