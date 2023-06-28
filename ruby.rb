@@ -1,23 +1,10 @@
-class User
-attr_accessor :name
+a = nil
 
-  def initialize(name)
-    @name = name
-  end
-
-
-
- 
-
-end 
-
-user = User.new('らん')
-puts user.name
-user.name = "毛利蘭"
-puts user.name
+if !a.nil?
+  puts "はい "
+else 
+  puts "いいえ"
+end
 
 
-# puts user.name
-# user.name = "名探偵コナン"
-# puts user.name
-
+論理否定
