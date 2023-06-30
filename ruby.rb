@@ -101,18 +101,25 @@
 # o.name = "ゾロ"
 # puts o.name
 # # 'yamada' と表示する
-
-
 class Onepiece 
-  attr_accessor :name
+  # attr_accessor :name
 
+  def name  #①
+    @name
+  end 
   
-  def say_name
-   self.name = "ルフィ"
-  end
+  def name=(value) #②
+    @name = value
+  end 
 
+  def change_name(name)
+   self.name = name  #ここのself.name = nameは②のnameメソッドを呼び出している
+  end 
+  
+  end 
+  
+  onepiece = Onepiece.new
+  onepiece.change_name("サンジ")
+  puts onepiece.name #⇦このnameは①のnameゲッターメソッド
+  
 
-end
-o = Onepiece.new
- o.say_name
- puts o.name
