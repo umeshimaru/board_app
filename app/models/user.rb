@@ -27,6 +27,9 @@ class User < ApplicationRecord
     self.update_attribute(:remember_digest,User.digest(remember_token))
   end
 
+  def feed 
+    Micropost.where("user_id = ?" ,id)
+  end 
 
    # 渡されたトークンがダイジェストと一致したらtrueを返す
    def authenticated?(attribute, token)

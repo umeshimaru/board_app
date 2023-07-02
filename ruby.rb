@@ -103,16 +103,3 @@
 # # 'yamada' と表示する
 
 
-class Onepiece 
-  attr_accessor :name
-
-  
-  def say_name
-   self.name = "ルフィ"
-  end
-
-
-end
-o = Onepiece.new
- o.say_name
- puts o.name
